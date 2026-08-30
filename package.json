@@ -39,7 +39,7 @@
     "typescript": "^6.0.3"
   },
   "overrides": {
-    "tmp": ">=0.2.6",
+    "tmp": ">=0.2.7",
     "uuid": ">=14.0.2"
   },
   "engines": {
