@@ -1,0 +1,29 @@
+---
+import { contactEmail } from '../../i18n/pages'
+import { localePath } from '../../i18n/utils'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="entreprises"
+  title="Companies"
+  heading="Companies area"
+  description="Information for companies: national pedagogical programme of the DUT Informatique, map of departments to offer internships or apprenticeships, job postings."
+>
+  <p class="lead">Welcome to the business page.</p>
+  <p>
+    You will find on this site information about the DUT Informatique. In particular, the
+    <a href={localePath('en', 'presentation')}>presentation page of the DUT Informatique</a> will inform
+    you about the national pedagogical programme.
+  </p>
+  <p>
+    <a href={localePath('en', 'carte')}>The map of France of the DUT Informatique</a> will allow you to
+    find a DUT close to your business and get in touch to offer
+    <strong>internship or apprenticeship opportunities</strong>.
+  </p>
+  <p>
+    You can also send us <strong>job postings</strong> to the following address; they can be redirected
+    to all of our students (current and former) in France:
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+</ContentPage>

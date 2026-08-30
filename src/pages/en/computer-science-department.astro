@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets'
+import iutInfo from '../../assets/iutinfo.gif'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="departement"
+  title="Computer science department"
+  heading="The computer science departments at the IUT"
+  description="Computer science at the IUT: the DUT (L2 level), the Professional Licence Computer and Software Systems (L3 level) and the VAE."
+>
+  <figure class="portrait">
+    <Image
+      src={iutInfo}
+      alt="Logo of the IUT computer science departments"
+      width={170}
+      height={138}
+    />
+  </figure>
+  <p class="lead">
+    The teaching of computer science at the IUT gives a large part to the professional dimension
+    while retaining fundamental components; the student thus acquires know-how but also knowledge,
+    basic concepts and methods of work that they will be able to put to use in a professional
+    situation.
+  </p>
+  <h2>
+    The DUT, university and professional diploma (level L2 of the LMD scheme, 120 European credits)
+  </h2>
+  <p>
+    The holders of the DUT in computer science are senior technicians, able to participate in the
+    design, realisation and implementation of computer systems. They can, however, if they wish,
+    continue their studies at the end of this degree.
+  </p>
+  <h2>
+    The Professional Licence “Computer and Software Systems” (SIL), L3 degree in the LMD scheme
+    (Bachelor’s degree, 180 European credits)
+  </h2>
+  <p>
+    <a href="http://www.iut-informatique.fr/LicencesProfessionnelles/"
+      >These pages present the professional licences</a
+    > offered in the IUT computer science departments.
+  </p>
+  <p>
+    The holders of the SIL licence are specialists capable of participating in a software
+    development project and, ultimately, taking full responsibility for it.
+  </p>
+  <h2>Validation of acquired experience</h2>
+  <p>
+    It is also possible to have your experience (professional or otherwise) recognised in order to
+    obtain a degree, a title or a certificate of professional qualification. You can visit the
+    government website concerning the
+    <a
+      href="https://travail-emploi.gouv.fr/formation-professionnelle/evoluer-professionnellement/vae"
+      >validation of acquired experience (VAE)</a
+    >.
+  </p>
+</ContentPage>

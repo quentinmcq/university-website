@@ -1,0 +1,58 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommitTypeAll(chore)"],
+  "timezone": "Europe/Paris",
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 8am on the first day of the month"],
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "description": "Astro et ses intégrations officielles / communautaires bougent ensemble",
+      "groupName": "Astro",
+      "matchPackageNames": ["astro", "@astrojs/**", "astro-pagefind"]
+    },
+    {
+      "description": "Polices auto-hébergées",
+      "groupName": "Fonts",
+      "matchPackageNames": ["@fontsource/**", "@fontsource-variable/**"]
+    },
+    {
+      "description": "Lint (oxlint), formatage (oxfmt), validation HTML et hooks git",
+      "groupName": "Lint & format tooling",
+      "matchPackageNames": ["oxlint", "oxfmt", "html-validate", "lefthook"]
+    },
+    {
+      "description": "Outils de test qualité : accessibilité (pa11y) et performance (Lighthouse CI) + serveur statique de test",
+      "groupName": "QA tooling",
+      "matchPackageNames": ["pa11y-ci", "pa11y", "@lhci/**", "serve", "start-server-and-test"]
+    },
+    {
+      "description": "TypeScript : @astrojs/check n'accepte que TS ^5 || ^6 (TS 7 est le compilateur natif sans API JS) → majeur sur approbation",
+      "matchPackageNames": ["typescript"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "GitHub Actions groupées",
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"]
+    },
+    {
+      "description": "Version de Node (.node-version + engines) : majeur sur approbation, à aligner avec l'hébergeur/CI",
+      "groupName": "Node.js",
+      "matchDatasources": ["node-version"],
+      "matchUpdateTypes": ["major"],
+      "dependencyDashboardApproval": true
+    },
+    {
+      "description": "Outillage de dev : mineures/patchs fusionnés automatiquement une fois la CI verte (format, lint, check, build, HTML, a11y, Lighthouse)",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+---
+import { contactEmail } from '../../i18n/pages'
+import { localePath } from '../../i18n/utils'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="entreprises"
+  title="Entreprises"
+  heading="Espace entreprises"
+  description="Informations pour les entreprises : programme pédagogique national du DUT Informatique, carte des départements pour proposer stages et apprentissages, dépôt d’offres d’emploi."
+>
+  <p class="lead">Bienvenue sur la page consacrée aux entreprises.</p>
+  <p>
+    Vous trouverez sur ce site des informations sur le DUT Informatique. Notamment, la
+    <a href={localePath('fr', 'presentation')}>page de présentation du DUT Informatique</a> vous renseignera
+    sur le programme pédagogique national.
+  </p>
+  <p>
+    <a href={localePath('fr', 'carte')}>La carte de France des DUT Informatique</a> vous permettra de
+    trouver un DUT proche de votre entreprise et de prendre contact pour proposer des
+    <strong> offres de stage ou d’apprentissage</strong>.
+  </p>
+  <p>
+    Vous pouvez aussi nous faire passer des <strong>offres d’emplois</strong> à l’adresse suivante ; elles
+    pourront être redirigées à l’ensemble de nos étudiants (actuels et anciens) en France :
+    <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+  </p>
+</ContentPage>

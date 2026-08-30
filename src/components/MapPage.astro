@@ -1,0 +1,97 @@
+---
+import type { ImageMetadata } from 'astro'
+import carteFrance from '../assets/carte.jpg'
+import carteParis from '../assets/carteParis.jpg'
+import { franceMap, parisMap, type IutMapData } from '../data/iut-map'
+import type { Locale } from '../i18n/pages'
+import { t } from '../i18n/ui'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import IutMap from './IutMap.astro'
+
+interface Props {
+  locale: Locale
+  title: string
+  heading: string
+  description: string
+  franceTitle: string
+}
+
+const { locale, title, heading, description, franceTitle } = Astro.props
+const tr = t(locale)
+
+const sections: {
+  id: string
+  title: string
+  image: ImageMetadata
+  alt: string
+  data: IutMapData
+}[] = [
+  {
+    id: 'france',
+    title: franceTitle,
+    image: carteFrance,
+    alt: tr('mapFranceAlt'),
+    data: franceMap,
+  },
+  {
+    id: 'idf',
+    title: tr('ileDeFrance'),
+    image: carteParis,
+    alt: tr('mapParisAlt'),
+    data: parisMap,
+  },
+]
+---
+
+<BaseLayout pageKey="carte" title={title} description={description}>
+  <header class="page__header">
+    <h1 class="page-title">{heading}</h1>
+    <p class="map-hint">{tr('mapHint')}</p>
+  </header>
+
+  {
+    sections.map((section) => (
+      <section class="map-layout" aria-labelledby={`${section.id}-title`}>
+        <div>
+          <h2 id={`${section.id}-title`}>{section.title}</h2>
+          <IutMap
+            image={section.image}
+            alt={section.alt}
+            data={section.data}
+            labelledBy={`${section.id}-title`}
+          />
+        </div>
+        <div>
+          <h3 id={`${section.id}-list`}>{tr('mapListTitle')}</h3>
+          <ul class="map-list" aria-labelledby={`${section.id}-list`}>
+            {section.data.markers
+              .slice()
+              .sort((a, b) => a.city.localeCompare(b.city, locale))
+              .map((marker) => (
+                <li>
+                  <a href={marker.url}>
+                    <strong>{marker.city}</strong>
+                    <small>{marker.institution}</small>
+                  </a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </section>
+    ))
+  }
+</BaseLayout>
+
+<style>
+  .map-layout + .map-layout {
+    margin-top: var(--space-2xl);
+  }
+  .map-layout h2 {
+    font-size: var(--step-2);
+    margin-bottom: var(--space-m);
+  }
+  .map-layout h3 {
+    font-size: var(--step-1);
+    margin-bottom: var(--space-s);
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+import portrait from '../../assets/damien.gif'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="temoignages"
+  title="Témoignages"
+  heading="Témoignage de Damien Lefebvre"
+  description="Parcours de Damien Lefebvre, du DUT Informatique de l’IUT de Villetaneuse à son poste d’analyste programmeur dans une grande SSII française."
+>
+  <figure class="portrait">
+    <Image src={portrait} alt="Portrait de Damien Lefebvre" width={178} height={209} />
+    <figcaption>Damien Lefebvre, analyste programmeur</figcaption>
+  </figure>
+  <p>
+    Son bac S en poche, Damien Lefebvre a passé quelques mois sur les bancs de la fac, avant de se
+    réorienter, en quête d’une formation plus encadrée. Son expérience universitaire lui ayant
+    révélé un goût prononcé pour l’informatique, il décide de candidater à l’IUT de Villetaneuse
+    afin de préparer un DUT Informatique option Génie Logiciel en 2002.
+  </p>
+  <p>
+    L’encadrement proposé par des professeurs passionnés, l’acquisition de méthodes de travail
+    rigoureuses l’ont incité à compléter sa formation via la Licence Professionnelle Systèmes
+    Informatique et Logiciel option Génie Logiciel, proposée par le même IUT.
+  </p>
+  <blockquote>
+    <p>
+      « Les connaissances et compétences développées par trois années d’étude de l’algorithmique,
+      des bases de données, mais aussi des aspects comptables du monde de l’Entreprise, ont été la
+      clef qui m’a permis d’être recruté par une grande société de service informatique française,
+      après 4 mois de stage de fin d’année. »
+    </p>
+  </blockquote>
+  <p>
+    Depuis maintenant un an et demi le jeune Analyste Programmeur met ses compétences au service de
+    grands clients, parmi lesquels des établissements bancaires renommés, et souhaite à l’avenir
+    s’orienter vers le « Consulting ».
+  </p>
+</ContentPage>

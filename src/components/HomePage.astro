@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets'
+import iutPhoto from '../assets/iut.jpg'
+import type { Locale, PageKey } from '../i18n/pages'
+import { navigation, pages } from '../i18n/pages'
+import { t } from '../i18n/ui'
+import { localePath } from '../i18n/utils'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+interface Props {
+  locale: Locale
+  description: string
+  primaryCta: string
+  secondaryCta: string
+}
+
+const { locale, description, primaryCta, secondaryCta } = Astro.props
+const tr = t(locale)
+
+type Card = { key: PageKey; group?: string }
+const cards = navigation.flatMap((item): Card[] =>
+  'key' in item
+    ? item.key === 'home'
+      ? []
+      : [{ key: item.key }]
+    : item.children.map((key) => ({ key, group: item.label[locale] })),
+)
+---
+
+<BaseLayout pageKey="home" title={tr('siteName')} description={description}>
+  <section class="hero">
+    <div class="hero__text">
+      <p class="eyebrow">{tr('siteName')}</p>
+      <h1 class="hero__title">{tr('homeHeading')}</h1>
+      <p class="hero__lead">{tr('tagline')}</p>
+      <div class="hero__actions">
+        <a class="button" href={localePath(locale, 'presentation')}>{primaryCta}</a>
+        <a class="button button--ghost" href={localePath(locale, 'carte')}>{secondaryCta}</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <Image
+        src={iutPhoto}
+        alt={tr('homePhotoAlt')}
+        width={880}
+        height={660}
+        widths={[480, 640, 880, 1320]}
+        sizes="(min-width: 56rem) 40vw, 92vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="explore" aria-labelledby="explore-title">
+    <h2 id="explore-title">{tr('exploreTitle')}</h2>
+    <ul class="card-grid">
+      {
+        cards.map(({ key, group }) => (
+          <li>
+            <a class="card" href={localePath(locale, key)}>
+              {group && <span class="card__group">{group}</span>}
+              <span class="card__title">{pages[key][locale].label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

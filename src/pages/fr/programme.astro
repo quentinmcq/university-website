@@ -1,0 +1,41 @@
+---
+import { publicPath } from '../../i18n/utils'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="programme"
+  title="Programme"
+  heading="Le programme officiel du DUT"
+  description="Résultats des enquêtes post DUT informatique menées de 1999 à 2003, à télécharger au format PowerPoint."
+>
+  <p class="lead">Les résultats d’enquêtes post DUT informatique :</p>
+  <h2>Enquêtes</h2>
+  <ul class="file-list">
+    <li>
+      <a href={publicPath('documents/enquetes/enquete1999.ppt')}
+        >Enquête 1999 <small>(PowerPoint, 856 Ko)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2000.ppt')}
+        >Enquête 2000 <small>(PowerPoint, 865 Ko)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2001.ppt')}
+        >Enquête 2001 <small>(PowerPoint, 479 Ko)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2002.ppt')}
+        >Enquête 2002 <small>(PowerPoint, 190 Ko)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2003.ppt')}
+        >Enquête 2003 <small>(PowerPoint, 323 Ko)</small></a
+      >
+    </li>
+  </ul>
+</ContentPage>

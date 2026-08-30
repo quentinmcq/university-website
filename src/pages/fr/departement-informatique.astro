@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets'
+import iutInfo from '../../assets/iutinfo.gif'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="departement"
+  title="Département informatique"
+  heading="Les départements informatique à l’IUT"
+  description="L’informatique à l’IUT : le DUT (niveau L2), la Licence Professionnelle Systèmes Informatiques et Logiciels (niveau L3) et la VAE."
+>
+  <figure class="portrait">
+    <Image
+      src={iutInfo}
+      alt="Logo des départements informatique des IUT"
+      width={170}
+      height={138}
+    />
+  </figure>
+  <p class="lead">
+    L’enseignement de l’informatique à l’IUT fait une large part à la dimension professionnelle tout
+    en conservant des composantes fondamentales ; l’étudiant acquiert ainsi des savoir-faires mais
+    également des connaissances, des concepts de base et des méthodes de travail qu’il sera à même
+    de mettre à profit en situation professionnelle.
+  </p>
+  <h2>
+    Le DUT, diplôme universitaire et professionnel (niveau L2 du schéma LMD, 120 crédits européens)
+  </h2>
+  <p>
+    Les titulaires du DUT en informatique sont des techniciens supérieurs, capables de participer à
+    la conception, la réalisation et la mise en oeuvre de systèmes informatiques. Ils peuvent
+    cependant s’ils le désirent poursuivre leurs études à l’issue de ce diplôme.
+  </p>
+  <h2>
+    La Licence Professionnelle « Systèmes Informatiques et Logiciels » (SIL), diplôme de niveau L3
+    dans le schéma LMD (grade de Licence, 180 crédits européens)
+  </h2>
+  <p>
+    <a href="http://www.iut-informatique.fr/LicencesProfessionnelles/"
+      >Ces pages présentent les licences professionnelles</a
+    > proposées dans les départements informatiques d’IUT.
+  </p>
+  <p>
+    Les titulaires de la licence SIL sont des spécialistes capables de participer à un projet de
+    développement logiciel et, à terme, d’en prendre la complète responsabilité.
+  </p>
+  <h2>La validation des acquis</h2>
+  <p>
+    Il est également possible de faire reconnaître son expérience (professionnelle ou non) afin
+    d’obtenir un diplôme, un titre ou un certificat de qualification professionnelle. Vous pouvez
+    visiter le site du gouvernement concernant la
+    <a
+      href="https://travail-emploi.gouv.fr/formation-professionnelle/evoluer-professionnellement/vae"
+      >validation des acquis de l’expérience (VAE)</a
+    >.
+  </p>
+</ContentPage>

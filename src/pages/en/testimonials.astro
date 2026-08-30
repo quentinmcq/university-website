@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets'
+import portrait from '../../assets/damien.gif'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="temoignages"
+  title="Testimonials"
+  heading="Testimony of Damien Lefebvre"
+  description="The path of Damien Lefebvre, from the DUT Computer Science at the IUT of Villetaneuse to his position as analyst-programmer in a French IT service company."
+>
+  <figure class="portrait">
+    <Image src={portrait} alt="Portrait of Damien Lefebvre" width={178} height={209} />
+    <figcaption>Damien Lefebvre, analyst-programmer</figcaption>
+  </figure>
+  <p>
+    With his baccalaureate S in his pocket, Damien Lefebvre spent a few months at university before
+    reorienting himself in search of a more structured training. His academic experience having
+    revealed to him a taste for computing, he decided to apply to the IUT of Villetaneuse to prepare
+    a DUT Computer Science, Software Engineering option, in 2002.
+  </p>
+  <p>
+    The supervision provided by passionate professors and the acquisition of rigorous working
+    methods encouraged him to complete his training with the Professional Licence in Computer
+    Systems and Software, Software Engineering option, offered by the same IUT.
+  </p>
+  <blockquote>
+    <p>
+      “The knowledge and skills developed over three years of studying algorithmics and databases,
+      but also the accounting aspects of the business world, were the key that allowed me to be
+      recruited by a large French IT service company, after a 4-month end-of-year internship.”
+    </p>
+  </blockquote>
+  <p>
+    For a year and a half now, the young Analyst-Programmer has been putting his skills to the
+    service of major customers, among which are renowned banking institutions, and in the future
+    wishes to move towards “Consulting”.
+  </p>
+</ContentPage>

@@ -1,0 +1,129 @@
+---
+import type { Locale, PageKey } from '../i18n/pages'
+import { navigation, pages } from '../i18n/pages'
+import { t } from '../i18n/ui'
+import { localePath } from '../i18n/utils'
+
+interface Props {
+  locale: Locale
+  pageKey: PageKey
+}
+
+const { locale, pageKey } = Astro.props
+const tr = t(locale)
+---
+
+<nav class="site-nav" aria-label={tr('mainNav')}>
+  <div class="container site-nav__inner">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-menu">
+      <svg
+        class="icon-menu"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg
+      >
+      <svg
+        class="icon-close"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"></path></svg
+      >
+      {tr('menu')}
+    </button>
+    <ul class="site-nav__list" id="main-menu">
+      {
+        navigation.map((item) =>
+          'key' in item ? (
+            <li>
+              <a
+                href={localePath(locale, item.key)}
+                aria-current={item.key === pageKey ? 'page' : undefined}
+              >
+                {pages[item.key][locale].label}
+              </a>
+            </li>
+          ) : (
+            <li>
+              <details
+                class:list={['nav-group', { 'is-active': item.children.includes(pageKey) }]}
+                name="main-nav-group"
+              >
+                <summary>
+                  {item.label[locale]}
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </summary>
+                <ul class="nav-group__menu">
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={localePath(locale, child)}
+                        aria-current={child === pageKey ? 'page' : undefined}
+                      >
+                        {pages[child][locale].label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ),
+        )
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('.site-nav')
+  const toggle = nav?.querySelector<HTMLButtonElement>('.nav-toggle')
+  const groups = nav
+    ? Array.from(nav.querySelectorAll<HTMLDetailsElement>('details.nav-group'))
+    : []
+
+  const closeAll = (except?: HTMLDetailsElement) => {
+    for (const group of groups) {
+      if (group !== except) group.open = false
+    }
+  }
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true'
+    toggle.setAttribute('aria-expanded', String(!expanded))
+    if (expanded) closeAll()
+  })
+
+  for (const group of groups) {
+    group.addEventListener('toggle', () => {
+      if (group.open) closeAll(group)
+    })
+  }
+
+  document.addEventListener('click', (event) => {
+    if (nav && event.target instanceof Node && !nav.contains(event.target)) closeAll()
+  })
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return
+    const open = groups.find((group) => group.open)
+    if (open) {
+      open.open = false
+      open.querySelector<HTMLElement>('summary')?.focus()
+    }
+  })
+</script>

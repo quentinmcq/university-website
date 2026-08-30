@@ -1,0 +1,41 @@
+---
+import { publicPath } from '../../i18n/utils'
+import ContentPage from '../../layouts/ContentPage.astro'
+---
+
+<ContentPage
+  pageKey="programme"
+  title="Programme"
+  heading="The official DUT programme"
+  description="Results of the post-DUT computer science surveys carried out from 1999 to 2003, available for download in PowerPoint format."
+>
+  <p class="lead">The results of the post-DUT computer science surveys:</p>
+  <h2>Surveys</h2>
+  <ul class="file-list">
+    <li>
+      <a href={publicPath('documents/enquetes/enquete1999.ppt')}
+        >1999 survey <small>(PowerPoint, 856 KB)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2000.ppt')}
+        >2000 survey <small>(PowerPoint, 865 KB)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2001.ppt')}
+        >2001 survey <small>(PowerPoint, 479 KB)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2002.ppt')}
+        >2002 survey <small>(PowerPoint, 190 KB)</small></a
+      >
+    </li>
+    <li>
+      <a href={publicPath('documents/enquetes/enquete2003.ppt')}
+        >2003 survey <small>(PowerPoint, 323 KB)</small></a
+      >
+    </li>
+  </ul>
+</ContentPage>

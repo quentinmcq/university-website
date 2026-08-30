@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets'
+import logo from '../assets/logo.png'
+import type { Locale, PageKey } from '../i18n/pages'
+import { teacherAccessUrl } from '../i18n/pages'
+import { t } from '../i18n/ui'
+import { localePath } from '../i18n/utils'
+import LanguageSwitcher from './LanguageSwitcher.astro'
+import MainNav from './MainNav.astro'
+import SiteSearch from './SiteSearch.astro'
+
+interface Props {
+  locale: Locale
+  pageKey: PageKey
+}
+
+const { locale, pageKey } = Astro.props
+const tr = t(locale)
+---
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href={localePath(locale, 'home')}>
+      <Image src={logo} alt="" width={174} height={54} loading="eager" layout="fixed" />
+      <span class="brand__text">
+        <span class="brand__name">{tr('siteShortName')}</span>
+        <span class="brand__tagline">{tr('siteName')}</span>
+      </span>
+    </a>
+    <div class="utility">
+      <a class="utility__link" href={teacherAccessUrl} rel="external">{tr('teacherAccess')}</a>
+      <LanguageSwitcher locale={locale} pageKey={pageKey} />
+      <SiteSearch locale={locale} />
+    </div>
+  </div>
+  <MainNav locale={locale} pageKey={pageKey} />
+</header>

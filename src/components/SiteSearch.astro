@@ -1,0 +1,47 @@
+---
+/**
+ * Recherche plein texte côté client (Pagefind, index construit au build).
+ * Remplace la barre de recherche factice du site de 2018.
+ */
+import Search from 'astro-pagefind/components/Search.astro'
+import type { Locale } from '../i18n/pages'
+import { t } from '../i18n/ui'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const tr = t(locale)
+---
+
+<div class="site-search" data-search-label={tr('searchLabel')}>
+  <Search
+    instance={`search-${locale}`}
+    className="site-search__box"
+    searchboxOptions={{
+      placeholder: tr('searchPlaceholder'),
+      'show-images': 'false',
+      'max-results': '8',
+    }}
+  />
+</div>
+
+<script>
+  for (const wrapper of document.querySelectorAll<HTMLElement>('.site-search')) {
+    const label = wrapper.dataset.searchLabel
+    if (!label) continue
+    const fix = () => {
+      const input = wrapper.querySelector<HTMLInputElement>('input.pf-searchbox-input')
+      if (!input) return false
+      input.setAttribute('aria-label', label)
+      return true
+    }
+    if (!fix()) {
+      const observer = new MutationObserver(() => {
+        if (fix()) observer.disconnect()
+      })
+      observer.observe(wrapper, { childList: true, subtree: true })
+    }
+  }
+</script>

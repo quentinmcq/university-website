@@ -1,0 +1,35 @@
+---
+/**
+ * Carte cliquable responsive : remplace l'image-map jQuery de 2018.
+ * Les marqueurs sont des liens positionnés en pourcentage ; la liste textuelle
+ * fournie par la page reste l'alternative accessible complète.
+ */
+import type { ImageMetadata } from 'astro'
+import { Image } from 'astro:assets'
+import type { IutMapData } from '../data/iut-map'
+
+interface Props {
+  image: ImageMetadata
+  alt: string
+  data: IutMapData
+  labelledBy: string
+}
+
+const { image, alt, data, labelledBy } = Astro.props
+const pct = (value: number, total: number) => `${((value / total) * 100).toFixed(2)}%`
+---
+
+<div class="iut-map" role="group" aria-labelledby={labelledBy}>
+  <Image src={image} alt={alt} width={data.width} height={data.height} widths={[380, 640, 960]} />
+  {
+    data.markers.map((marker) => (
+      <a
+        class="iut-map__marker"
+        href={marker.url}
+        style={`left:${pct(marker.x, data.width)};top:${pct(marker.y, data.height)}`}
+      >
+        <span>{marker.city}</span>
+      </a>
+    ))
+  }
+</div>

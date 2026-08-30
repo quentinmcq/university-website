@@ -1,0 +1,336 @@
+/**
+ * Départements informatique positionnés sur les cartes.
+ * Les coordonnées (x, y) sont en pixels dans l'image d'origine ; le composant IutMap les convertit en %.
+ * Données reprises de l'image-map du site de 2018 (correction : le point « Lyon » pointait vers l'IUT du Littoral).
+ */
+export interface MapMarker {
+  /** Ville (libellé court affiché au survol). */
+  city: string
+  /** Nom de l'établissement. */
+  institution: string
+  url: string
+  x: number
+  y: number
+}
+
+export interface IutMapData {
+  width: number
+  height: number
+  markers: MapMarker[]
+}
+
+export const franceMap: IutMapData = {
+  width: 380,
+  height: 397,
+  markers: [
+    {
+      city: 'Calais',
+      institution: 'IUT du Littoral Côte d’Opale',
+      url: 'http://www.iut.univ-littoral.fr/',
+      x: 181,
+      y: 51,
+    },
+    {
+      city: 'Lille',
+      institution: 'IUT de Lille',
+      url: 'https://iut.univ-lille.fr/',
+      x: 214,
+      y: 72,
+    },
+    {
+      city: 'Lens',
+      institution: 'IUT de Lens',
+      url: 'https://www.iut-lens.univ-artois.fr/',
+      x: 190,
+      y: 85,
+    },
+    {
+      city: 'Le Havre',
+      institution: 'IUT du Havre',
+      url: 'https://www-iut.univ-lehavre.fr/index.php?option=com_content&view=category&layout=blog&id=102&Itemid=33&lang=fr',
+      x: 150,
+      y: 94,
+    },
+    {
+      city: 'Maubeuge',
+      institution: 'IUT de Valenciennes-Cambrai-Maubeuge',
+      url: 'https://www.uphf.fr/IUT/liut-de-valenciennes-en-un-clin-doeil',
+      x: 227,
+      y: 93,
+    },
+    {
+      city: 'Amiens',
+      institution: 'IUT d’Amiens',
+      url: 'https://info.iut-amiens.fr/',
+      x: 184,
+      y: 103,
+    },
+    {
+      city: 'Reims',
+      institution: 'IUT de Reims-Châlons-Charleville',
+      url: 'https://iut-info.univ-reims.fr/',
+      x: 235,
+      y: 114,
+    },
+    {
+      city: 'Caen',
+      institution: 'IUT de Caen (Université de Caen Basse-Normandie)',
+      url: 'https://www.iutc3.unicaen.fr/info-new/accueil.html',
+      x: 132,
+      y: 105,
+    },
+    {
+      city: 'Metz',
+      institution: 'IUT de Metz (Université de Lorraine)',
+      url: 'http://iut-metz.univ-lorraine.fr/departement-info',
+      x: 259,
+      y: 123,
+    },
+    {
+      city: 'Lannion',
+      institution: 'IUT de Lannion',
+      url: 'http://www.iut-lannion.fr/',
+      x: 47,
+      y: 107,
+    },
+    {
+      city: 'Saint-Dié',
+      institution: 'IUT de Saint-Dié-des-Vosges (Université de Lorraine)',
+      url: 'https://iutsd.univ-lorraine.fr/',
+      x: 276,
+      y: 133,
+    },
+    {
+      city: 'Laval',
+      institution: 'IUT de Laval (Le Mans Université)',
+      url: 'http://www.iut-laval.univ-lemans.fr/fr/info-informatique-et-programmation/dut-informatique.html',
+      x: 108,
+      y: 140,
+    },
+    {
+      city: 'Nancy',
+      institution: 'IUT Nancy-Charlemagne',
+      url: 'https://iut-charlemagne.univ-lorraine.fr/',
+      x: 257,
+      y: 144,
+    },
+    {
+      city: 'Strasbourg',
+      institution: 'IUT Robert Schuman (Université de Strasbourg)',
+      url: 'https://iutrs.unistra.fr/',
+      x: 281,
+      y: 152,
+    },
+    {
+      city: 'Orléans',
+      institution: 'IUT d’Orléans',
+      url: 'https://www.univ-orleans.fr/iut-orleans/informatique/?page=m2_formation.htm/',
+      x: 169,
+      y: 158,
+    },
+    {
+      city: 'Belfort',
+      institution: 'IUT de Belfort-Montbéliard (Université de Franche-Comté)',
+      url: 'https://www.iut-nfc.univ-fcomte.fr/',
+      x: 254,
+      y: 173,
+    },
+    {
+      city: 'Dijon',
+      institution: 'IUT de Dijon-Auxerre',
+      url: 'https://iutdijon.u-bourgogne.fr/www/',
+      x: 213,
+      y: 189,
+    },
+    {
+      city: 'Nantes',
+      institution: 'IUT de Nantes',
+      url: 'https://iutnantes.univ-nantes.fr/',
+      x: 82,
+      y: 173,
+    },
+    {
+      city: 'Vannes',
+      institution: 'IUT de Vannes',
+      url: 'http://www.iutvannes.fr/Formations/INFO/info.asp',
+      x: 64,
+      y: 167,
+    },
+    {
+      city: 'La Rochelle',
+      institution: 'IUT de La Rochelle',
+      url: 'https://www.iut-larochelle.fr/',
+      x: 80,
+      y: 203,
+    },
+    {
+      city: 'Limoges',
+      institution: 'IUT du Limousin',
+      url: 'https://www.iut.unilim.fr/',
+      x: 133,
+      y: 220,
+    },
+    {
+      city: 'Clermont-Ferrand',
+      institution: 'IUT de Clermont-Ferrand',
+      url: 'https://www.iut-clermont.fr/?option=com_content&%2520task=section&id=7&Itemid=36',
+      x: 182,
+      y: 237,
+    },
+    {
+      city: 'Bourg-en-Bresse',
+      institution: 'IUT Lyon 1 — site de Bourg-en-Bresse',
+      url: 'https://iut.univ-lyon1.fr/formation/offre-de-formations/informatique-bourg-en-bresse-/informatique-bourg-en-bresse--790899.kjsp',
+      x: 228,
+      y: 214,
+    },
+    {
+      city: 'Annecy',
+      institution: 'IUT d’Annecy (Université Savoie Mont Blanc)',
+      url: 'https://www.iut-acy.univ-smb.fr/formation/bac+2/dut/info-informatique/',
+      x: 274,
+      y: 227,
+    },
+    { city: 'Lyon', institution: 'IUT Lyon 1', url: 'https://iut.univ-lyon1.fr/', x: 234, y: 233 },
+    {
+      city: 'Le Puy-en-Velay',
+      institution: 'IUT Midi-Pyrénées — Rodez (lien d’origine)',
+      url: 'https://www.iut-rodez.fr/',
+      x: 193,
+      y: 250,
+    },
+    {
+      city: 'Bordeaux',
+      institution: 'IUT de Bordeaux',
+      url: 'https://www.iut.u-bordeaux.fr/',
+      x: 93,
+      y: 248,
+    },
+    {
+      city: 'Grenoble',
+      institution: 'IUT 2 (Université Grenoble Alpes)',
+      url: 'https://iut2.univ-grenoble-alpes.fr/',
+      x: 251,
+      y: 246,
+    },
+    {
+      city: 'Blagnac',
+      institution: 'IUT de Blagnac',
+      url: 'https://www.iut-blagnac.fr/fr/',
+      x: 127,
+      y: 270,
+    },
+    {
+      city: 'Toulouse',
+      institution: 'IUT de Toulouse (Université Paul Sabatier)',
+      url: 'http://iut-informatique.ups-tlse.fr/',
+      x: 133,
+      y: 281,
+    },
+    {
+      city: 'Bayonne',
+      institution: 'IUT de Bayonne et du Pays Basque',
+      url: 'https://www.iutbayonne.univ-pau.fr/',
+      x: 64,
+      y: 283,
+    },
+    {
+      city: 'Rodez',
+      institution: 'IUT de Rodez',
+      url: 'https://www.iut-rodez.fr/',
+      x: 171,
+      y: 264,
+    },
+    {
+      city: 'Valence',
+      institution: 'IUT de Valence (Université Grenoble Alpes)',
+      url: 'https://www.iut-valence.fr/',
+      x: 236,
+      y: 261,
+    },
+    {
+      city: 'Aix-en-Provence',
+      institution: 'IUT d’Aix-Marseille — site d’Aix-en-Provence',
+      url: 'https://iut.univ-amu.fr/sites/site-daix-provence',
+      x: 245,
+      y: 286,
+    },
+    {
+      city: 'Nice',
+      institution: 'IUT Nice Côte d’Azur',
+      url: 'https://iut.univ-cotedazur.fr/',
+      x: 265,
+      y: 300,
+    },
+    {
+      city: 'Arles',
+      institution: 'IUT d’Aix-Marseille — site d’Arles',
+      url: 'https://allsh.univ-amu.fr/?menu=smenu4_1',
+      x: 240,
+      y: 311,
+    },
+    {
+      city: 'Montpellier',
+      institution: 'IUT de Montpellier-Sète',
+      url: 'http://iutdepinfo.iutmontp.univ-montp2.fr/index.php/formations/dut-informatique',
+      x: 195,
+      y: 296,
+    },
+  ],
+}
+
+export const parisMap: IutMapData = {
+  width: 321,
+  height: 295,
+  markers: [
+    {
+      city: 'Villetaneuse',
+      institution: 'IUT de Villetaneuse (Université Paris 13)',
+      url: 'https://iutv.univ-paris13.fr/dut-informatique/',
+      x: 136,
+      y: 107,
+    },
+    {
+      city: 'Montreuil',
+      institution: 'IUT de Montreuil (Université Paris 8)',
+      url: 'https://www.iut.univ-paris8.fr/',
+      x: 154,
+      y: 125,
+    },
+    {
+      city: 'Paris',
+      institution: 'IUT de Paris (Université Paris Descartes)',
+      url: 'http://www.iut.univ-paris5.fr/',
+      x: 123,
+      y: 139,
+    },
+    {
+      city: 'Marne-la-Vallée',
+      institution: 'IUT de Marne-la-Vallée (Université Paris-Est)',
+      url: 'http://iut.u-pem.fr/',
+      x: 216,
+      y: 137,
+    },
+    {
+      city: 'Vélizy',
+      institution: 'IUT de Vélizy',
+      url: 'http://info.iut-velizy.uvsq.fr/',
+      x: 90,
+      y: 162,
+    },
+    {
+      city: 'Orsay',
+      institution: 'IUT d’Orsay',
+      url: 'https://www.iut-orsay.u-psud.fr/fr/index.html',
+      x: 121,
+      y: 186,
+    },
+    {
+      city: 'Fontainebleau',
+      institution: 'IUT de Sénart-Fontainebleau (UPEC)',
+      url: 'https://www.u-pec.fr/',
+      x: 193,
+      y: 220,
+    },
+  ],
+}

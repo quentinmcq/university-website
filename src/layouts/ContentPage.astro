@@ -1,0 +1,26 @@
+---
+/**
+ * Mise en page des pages de contenu : titre de page + colonne de texte (classe .prose).
+ * `heading` permet un <h1> plus long que le <title>/libellé de navigation.
+ */
+import type { PageKey } from '../i18n/pages'
+import BaseLayout from './BaseLayout.astro'
+
+interface Props {
+  pageKey: PageKey
+  title: string
+  description: string
+  heading?: string
+}
+
+const { pageKey, title, description, heading = title } = Astro.props
+---
+
+<BaseLayout pageKey={pageKey} title={title} description={description}>
+  <article class="prose">
+    <header class="page__header">
+      <h1 class="page-title">{heading}</h1>
+    </header>
+    <slot />
+  </article>
+</BaseLayout>

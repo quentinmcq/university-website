@@ -1,0 +1,28 @@
+---
+import type { Locale } from '../i18n/pages'
+import { contactEmail, repositoryUrl } from '../i18n/pages'
+import { t } from '../i18n/ui'
+
+interface Props {
+  locale: Locale
+}
+
+const { locale } = Astro.props
+const tr = t(locale)
+const year = new Date().getFullYear()
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <h2>{tr('siteName')}</h2>
+        <p>{tr('footerContact')} <a href={`mailto:${contactEmail}`}>{contactEmail}</a></p>
+      </div>
+      <div>
+        <p><a href={repositoryUrl} rel="external">{tr('footerSource')}</a></p>
+      </div>
+    </div>
+    <p class="site-footer__bottom">{tr('footerCredits')} © {year}</p>
+  </div>
+</footer>
