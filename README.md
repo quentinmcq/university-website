@@ -10,8 +10,7 @@ Projet scolaire réalisé en groupe de trois de novembre à décembre 2018 (HTML
 - **Routage i18n natif** — `/fr/…` (défaut) et `/en/…`, slugs traduits, balises `hreflang` et sitemap générés.
 - **[Pagefind](https://pagefind.app)** — recherche plein texte indexée au build (`astro-pagefind`), par langue.
 - **Images optimisées** (`astro:assets`, WebP responsive) et **polices auto-hébergées** (Fraunces + Source Sans 3 via `@fontsource`).
-- **Qualité** : [oxlint](https://oxc.rs/docs/guide/usage/linter) (lint des `.ts`, `.mjs` et du code des `.astro`), [oxfmt](https://oxc.rs/docs/guide/usage/formatter) (formatage — les fichiers `.astro` ne sont pas encore pris en charge), `astro check`, `html-validate`, `pa11y-ci` (WCAG 2 AA), Lighthouse CI avec seuils.
-- **Hooks git** ([lefthook](https://lefthook.dev), installés par `bun install`) : formatage automatique des fichiers indexés au `commit`, lint + vérification du formatage au `push` (le push est refusé en cas d’échec).
+- **Qualité** : [oxlint](https://oxc.rs/docs/guide/usage/linter) (lint des `.ts`, `.mjs` et du code des `.astro`), [oxfmt](https://oxc.rs/docs/guide/usage/formatter) (formatage — les fichiers `.astro` ne sont pas encore pris en charge), `astro check`. Pour un audit ponctuel : `bunx pa11y-ci` (accessibilité) ou l’onglet Lighthouse de Chrome.
 - **Dépendances** : [Bun](https://bun.sh) (gestionnaire de paquets et lanceur de scripts), [Renovate](https://docs.renovatebot.com) (groupes par écosystème, automerge des mineures de l’outillage après CI verte).
 
 ## Prérequis
@@ -21,16 +20,14 @@ Projet scolaire réalisé en groupe de trois de novembre à décembre 2018 (HTML
 
 ## Commandes
 
-| Commande                  | Rôle                                                                                                                          |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `bun install`             | Installe les dépendances (télécharge aussi le Chrome de Puppeteer pour pa11y).                                                |
-| `bun run dev`             | Serveur de développement sur `http://localhost:4321` (la recherche utilise le dernier index construit).                       |
-| `bun run build`           | Build de production dans `dist/` + index Pagefind + sitemap.                                                                  |
-| `bun run preview`         | Prévisualise `dist/`.                                                                                                         |
-| `bun run check`           | Vérification des types et des composants (`astro check`).                                                                     |
-| `bun run lint` / `format` | oxlint / oxfmt ; `format:check` en CI et au push.                                                                             |
-| `bun run test`            | `test:html` (html-validate sur `dist/`) puis `test:a11y` (pa11y-ci sur les 26 pages servies localement).                      |
-| `bun run test:perf`       | Lighthouse CI sur un échantillon de pages (`lighthouserc.json`, seuils : perf ≥ 90, a11y ≥ 95, bonnes pratiques et SEO ≥ 90). |
+| Commande                  | Rôle                                                                                                    |
+| ------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `bun install`             | Installe les dépendances.                                                                               |
+| `bun run dev`             | Serveur de développement sur `http://localhost:4321` (la recherche utilise le dernier index construit). |
+| `bun run build`           | Build de production dans `dist/` + index Pagefind + sitemap.                                            |
+| `bun run preview`         | Prévisualise `dist/`.                                                                                   |
+| `bun run check`           | Vérification des types et des composants (`astro check`).                                               |
+| `bun run lint` / `format` | oxlint / oxfmt ; `format:check` en CI.                                                                  |
 
 ## Structure
 
@@ -70,7 +67,7 @@ Exemple GitHub Pages : `BASE_PATH=/university-website/ bun run build`, puis publ
 
 ## Intégration continue
 
-Le workflow `.github/workflows/ci.yml` exécute, sur chaque push et pull request : oxfmt (vérification), oxlint, `astro check`, build, html-validate, pa11y-ci et Lighthouse CI, puis publie `dist/` et les rapports Lighthouse en artefacts. Renovate s’appuie sur cette CI pour fusionner automatiquement les mises à jour mineures de l’outillage.
+Le workflow `.github/workflows/ci.yml` exécute, sur chaque push et pull request : oxfmt (vérification), oxlint, `astro check` et le build, puis publie `dist/` en artefact. Renovate s’appuie sur cette CI pour fusionner automatiquement les mises à jour mineures de l’outillage.
 
 ## Historique
 

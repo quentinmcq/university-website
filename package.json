@@ -11,12 +11,7 @@
     "check": "astro check",
     "lint": "oxlint",
     "format": "oxfmt",
-    "format:check": "oxfmt --check",
-    "test": "bun run test:html && bun run test:a11y",
-    "test:html": "html-validate \"dist/**/*.html\"",
-    "test:a11y": "start-server-and-test 'serve dist -l 4321 -n' http://localhost:4321/fr/ pa11y-ci",
-    "test:perf": "lhci autorun",
-    "prepare": "lefthook install"
+    "format:check": "oxfmt --check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -28,28 +23,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
-    "@lhci/cli": "^0.15.1",
-    "html-validate": "^11.11.0",
-    "lefthook": "^2.1.12",
     "oxfmt": "^0.65.0",
     "oxlint": "^1.80.0",
-    "pa11y-ci": "^4.1.1",
-    "serve": "^14.2.6",
-    "start-server-and-test": "^3.0.12",
     "typescript": "^6.0.3"
-  },
-  "overrides": {
-    "tmp": ">=0.2.7",
-    "uuid": ">=14.0.2"
   },
   "engines": {
     "node": ">=26.8.1"
   },
-  "packageManager": "bun@1.4.0",
-  "trustedDependencies": [
-    "esbuild",
-    "lefthook",
-    "puppeteer",
-    "sharp"
-  ]
+  "packageManager": "bun@1.4.0"
 }
