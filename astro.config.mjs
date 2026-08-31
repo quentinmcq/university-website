@@ -1,12 +1,9 @@
-// @ts-check
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 import pagefind from 'astro-pagefind'
 
 const site = process.env.SITE_URL ?? 'https://quentinmcq.github.io'
 const base = process.env.BASE_PATH ?? '/'
-
-// https://astro.build/config
 export default defineConfig({
   site,
   base,

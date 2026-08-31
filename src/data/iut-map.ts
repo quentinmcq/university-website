@@ -1,12 +1,5 @@
-/**
- * Départements informatique positionnés sur les cartes.
- * Les coordonnées (x, y) sont en pixels dans l'image d'origine ; le composant IutMap les convertit en %.
- * Données reprises de l'image-map du site de 2018 (correction : le point « Lyon » pointait vers l'IUT du Littoral).
- */
 export interface MapMarker {
-  /** Ville (libellé court affiché au survol). */
   city: string
-  /** Nom de l'établissement. */
   institution: string
   url: string
   x: number

@@ -20,13 +20,9 @@ export const pageKeys = [
 export type PageKey = (typeof pageKeys)[number]
 
 export interface PageMeta {
-  /** Segment d'URL après le préfixe de langue (vide pour l'accueil). */
   slug: string
-  /** Libellé court utilisé dans la navigation. */
   label: string
 }
-
-/** Registre des pages : une entrée par page et par langue. Source unique pour les URL et la navigation. */
 export const pages: Record<PageKey, Record<Locale, PageMeta>> = {
   home: { fr: { slug: '', label: 'Accueil' }, en: { slug: '', label: 'Home' } },
   presentation: {
@@ -76,8 +72,6 @@ export const pages: Record<PageKey, Record<Locale, PageMeta>> = {
 export type NavItem =
   | { key: PageKey }
   | { group: string; label: Record<Locale, string>; children: PageKey[] }
-
-/** Structure de la navigation principale (13 pages regroupées en 7 entrées). */
 export const navigation: NavItem[] = [
   { key: 'home' },
   { key: 'presentation' },
