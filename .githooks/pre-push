@@ -1,0 +1,6 @@
+#!/bin/sh
+# Vérifie le formatage et le lint avant chaque push (installé par le script `prepare`).
+# Pour ignorer ponctuellement : git push --no-verify
+set -e
+bun run format:check
+bun run lint

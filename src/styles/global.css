@@ -1008,6 +1008,15 @@ main:focus-visible {
 
 .site-search pagefind-searchbox {
   display: block;
+  /* Le composant n'a aucune hauteur avant son initialisation : sans cette réserve
+     l'en-tête grandit de 40 px au chargement et pousse tout le contenu (CLS ~0,03). */
+  min-height: var(--pf-input-height);
+}
+
+.site-search pagefind-searchbox:not(:defined) {
+  border: 1px solid var(--color-rule);
+  border-radius: 999px;
+  background: var(--color-white);
 }
 
 .site-search .pf-searchbox-input {

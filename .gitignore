@@ -7,3 +7,6 @@ npm-debug.log*
 .DS_Store
 .idea/
 .vscode/
+
+# rapports d'audit locaux
+.lighthouseci/
