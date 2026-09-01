@@ -15,10 +15,10 @@
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/source-sans-3": "^5.3.0",
-    "astro": "^7.2.9",
+    "astro": "^7.2.10",
     "astro-pagefind": "^2.0.1",
     "sharp": "^0.35.4"
   },
