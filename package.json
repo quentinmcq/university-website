@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "oxfmt": "^0.76.0",
-    "oxlint": "^1.91.0",
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0",
     "typescript": "^6.0.3"
   },
   "engines": {
